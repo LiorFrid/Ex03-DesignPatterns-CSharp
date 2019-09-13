@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
+namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 {
 	public static class Program
 	{
