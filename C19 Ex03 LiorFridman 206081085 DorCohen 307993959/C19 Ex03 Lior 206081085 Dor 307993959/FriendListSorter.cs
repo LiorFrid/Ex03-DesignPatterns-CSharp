@@ -1,12 +1,9 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
-
+using System.Collections.Generic;
+using FacebookWrapper.ObjectModel;
 
 namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 {
@@ -18,6 +15,29 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 	public abstract class FriendListSorter
 	{
+		public static FriendListSorter CreateSorter(eSortType i_SortType)
+		{
+			FriendListSorter result = null;
+
+			switch (i_SortType)
+			{
+				case eSortType.SortByFirstName:
+					{
+						result = new SortByFirstName();
+					}
+
+					break;
+				case eSortType.SortByLastName:
+					{
+						result = new SortByLastName();
+					}
+
+					break;
+			}
+
+			return result;
+		}
+
 		public void Sort(ref List<User> i_UserFriendList)
 		{
 			User[] UserFriendListAsArr = i_UserFriendList.ToArray();
@@ -59,29 +79,6 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			{
 				return string.Compare(i_FirstUser.LastName, i_SecondUser.LastName) > 0;
 			}
-		}
-
-		internal static FriendListSorter CreateSorter(eSortType i_SortType)
-		{
-			FriendListSorter result = null;
-
-			switch (i_SortType)
-			{
-				case eSortType.SortByFirstName:
-					{
-						result = new SortByFirstName();
-					}
-
-					break;
-				case eSortType.SortByLastName:
-					{
-						result = new SortByLastName();
-					}
-
-					break;
-			}
-
-			return result;
 		}
 	}
 }

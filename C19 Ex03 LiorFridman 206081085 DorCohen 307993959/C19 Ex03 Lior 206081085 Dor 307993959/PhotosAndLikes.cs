@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 {
 	public class PhotosAndLikes 
@@ -14,7 +13,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 		public int NumOfPhotos { get; set; }
 
-		public  List<string> Pictures;
+		public List<string> Pictures;
 
 		public PhotosAndLikes(int i_NumOfPhotos, int i_TotalLikes)
 		{
@@ -22,6 +21,5 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			TotalLikes = i_TotalLikes;
 			Pictures = new List<string>();
 		}
-
 	}
 }

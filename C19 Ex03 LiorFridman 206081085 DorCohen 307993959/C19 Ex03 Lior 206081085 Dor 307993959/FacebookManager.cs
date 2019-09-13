@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper;
@@ -35,11 +36,13 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			{
 				return m_LoggedInUserFriends;
 			}
+
 			set
 			{
 				m_LoggedInUserFriends = value;
 			}
 		}
+
 		public static FacebookManager GetInstance()
 		{
 			if (m_FacebookManager == null)
@@ -58,7 +61,6 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 		private void startMatchFeature()
 		{
-			
 			MatchFinder.FindMatch(LoggedInUser);
 		}
 
@@ -183,19 +185,19 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			FriendListSorter.Sort(ref m_LoggedInUserFriends);
 		}
 
-		internal void RunMatchByPhotos()
+		public void RunMatchByPhotos()
 		{
 			MatchFinder = new MatchFinderFeature(new MatcherByPhotos());
 			startMatchFeature();
 		}
 
-		internal void RunMatchByGroups()
+		public void RunMatchByGroups()
 		{
 			MatchFinder = new MatchFinderFeature(new MatcherByGroups());
 			startMatchFeature();
 		}
 
-		internal void RunMatchByFriends()
+		public void RunMatchByFriends()
 		{
 			MatchFinder = new MatchFinderFeature(new MatcherByFriends());
 			startMatchFeature();

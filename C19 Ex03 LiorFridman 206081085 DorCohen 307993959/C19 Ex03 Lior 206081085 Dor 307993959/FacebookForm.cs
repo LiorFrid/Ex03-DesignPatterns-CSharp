@@ -147,8 +147,6 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			}
         }
 
-
-
 		protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -217,20 +215,65 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 		private void MatchByPhotosBtn_Click(object sender, EventArgs e)
 		{
-			m_FacebookManager.RunMatchByPhotos();
-			setUI();
+			new Thread(MatchByPhotos).Start();
+		}
+
+		private void MatchByPhotos()
+		{
+			lock (sr_MatchFeatureLocker)
+			{
+				try
+				{
+					m_FacebookManager.RunMatchByPhotos();
+					setUI();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
 		}
 
 		private void MatchByGroupsBtn_Click(object sender, EventArgs e)
 		{
-			m_FacebookManager.RunMatchByGroups();
-			setUI();
+			new Thread(MatchByGroup).Start();
+		}
+
+		private void MatchByGroup()
+		{
+			lock (sr_MatchFeatureLocker)
+			{
+				try
+				{
+					m_FacebookManager.RunMatchByGroups();
+					setUI();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
 		}
 
 		private void MatchByFriendsBtn_Click(object sender, EventArgs e)
 		{
-			m_FacebookManager.RunMatchByFriends();
-			setUI();
+			new Thread(MatchByFriends).Start();
+		}
+
+		private void MatchByFriends()
+		{
+			lock (sr_MatchFeatureLocker)
+			{
+				try
+				{
+					m_FacebookManager.RunMatchByFriends();
+					setUI();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
 		}
 
 		private void setUI()
@@ -251,7 +294,6 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			{
 				MessageBox.Show(ex.Message);
 			}
-		}
-		
+		}	
 	}
 }

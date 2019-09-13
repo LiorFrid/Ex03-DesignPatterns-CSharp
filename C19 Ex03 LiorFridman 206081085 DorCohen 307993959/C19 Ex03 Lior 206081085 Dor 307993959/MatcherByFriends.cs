@@ -16,7 +16,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			int mutualFriends;
 			int maxMutualFriends = 0;
 			Random rnd = new Random();
-			int num = rnd.Next(1, 20);
+			int num = rnd.Next(1, 10);
 			User myMatchFriend = i_LoggedInUser.Friends[num];
 			foreach (User friend in i_LoggedInUser.Friends)
 			{
