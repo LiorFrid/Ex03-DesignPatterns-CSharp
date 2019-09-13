@@ -130,7 +130,8 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].Pictures.Add(photo);
 				}
 			}
-			PhotosAndLikes bestHour= new PhotosAndLikes(0,0);
+
+			PhotosAndLikes bestHour = new PhotosAndLikes(0, 0);
 			float maxLikePerPhoto = 0;
 			float likesPerPhoto;
 			int bestHourToPhoto = 0;
@@ -155,6 +156,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 				hour += 1;
 			}
+
 			Photo maxPhoto = new Photo();
 			foreach(Photo photo in bestHour)
 			{
