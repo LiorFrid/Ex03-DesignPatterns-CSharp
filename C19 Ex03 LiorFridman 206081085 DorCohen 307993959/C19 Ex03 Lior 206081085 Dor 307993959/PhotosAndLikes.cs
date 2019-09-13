@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookWrapper.ObjectModel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,18 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 		public int NumOfPhotos { get; set; }
 
-		public List<string> Pictures;
+		public List<Photo> Pictures { get; set; }
 
 		public PhotosAndLikes(int i_NumOfPhotos, int i_TotalLikes)
 		{
 			NumOfPhotos = i_NumOfPhotos;
 			TotalLikes = i_TotalLikes;
-			Pictures = new List<string>();
+			Pictures = new List<Photo>();
+		}
+
+		public IEnumerator GetEnumerator()
+		{
+			return Pictures.GetEnumerator();
 		}
 	}
 }

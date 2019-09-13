@@ -111,7 +111,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			AppSettingsInstance.RememberUser = false;
 		}
 
-		public int FindBestTimeToUploadAPicture(List<string> io_Pictures)
+		public int FindBestTimeToUploadAPicture(ref string io_MostLikesPicture)
 		{
 			FacebookObjectCollection<Album> albums;
 			albums = LoggedInUser.Albums;
@@ -127,10 +127,10 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 				{
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].NumOfPhotos += 1;
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].TotalLikes += photo.LikedBy.Count;
-					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].Pictures.Add(photo.PictureNormalURL);
+					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].Pictures.Add(photo);
 				}
 			}
-
+			PhotosAndLikes bestHour= new PhotosAndLikes(0,0);
 			float maxLikePerPhoto = 0;
 			float likesPerPhoto;
 			int bestHourToPhoto = 0;
@@ -148,14 +148,23 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 				if (maxLikePerPhoto < likesPerPhoto)
 				{
-					io_Pictures = photosAndLikes.Pictures;
+					bestHour = photosAndLikes;
 					maxLikePerPhoto = likesPerPhoto;
 					bestHourToPhoto = hour;
 				}
 
 				hour += 1;
 			}
+			Photo maxPhoto = new Photo();
+			foreach(Photo photo in bestHour)
+			{
+				if (maxPhoto.LikedBy.Count < photo.LikedBy.Count)
+				{
+					maxPhoto = photo;
+				}
+			}
 
+			io_MostLikesPicture = maxPhoto.PictureNormalURL;
 			return bestHourToPhoto;
 		}
 

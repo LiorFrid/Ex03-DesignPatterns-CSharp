@@ -23,15 +23,15 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			{
 				case eSortType.SortByFirstName:
 					{
-						result = new SortByFirstName();
+						result = new SorterByFirstName();
 					}
 
 					break;
 				case eSortType.SortByLastName:
 					{
-						result = new SortByLastName();
+						result = new SorterByLastName();
 					}
-
+				
 					break;
 			}
 
@@ -65,7 +65,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 		public abstract bool needSwap(User i_FirstUser, User i_SecondUser);
 
-		private class SortByFirstName : FriendListSorter
+		private class SorterByFirstName : FriendListSorter
 		{
 			public override bool needSwap(User i_FirstUser, User i_SecondUser)
 			{
@@ -73,7 +73,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 			}
 		}
 
-		private class SortByLastName : FriendListSorter
+		private class SorterByLastName : FriendListSorter
 		{
 			public override bool needSwap(User i_FirstUser, User i_SecondUser)
 			{

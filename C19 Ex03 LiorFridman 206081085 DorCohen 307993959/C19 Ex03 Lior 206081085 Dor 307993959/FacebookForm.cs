@@ -175,12 +175,12 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
         {
             try
             {
-                List<string> pictures = new List<string>();
-                int T = m_FacebookManager.FindBestTimeToUploadAPicture(pictures);
+				string pictures = null;
+                int T = m_FacebookManager.FindBestTimeToUploadAPicture(ref pictures);
                 m_BestTimeLabel.Text += T.ToString();
-                if (pictures.Count > 0)
+                if (pictures != null)
                 {
-                    m_BestTImePic.LoadAsync(pictures[0]);
+                    m_BestTImePic.LoadAsync(pictures);
                 }
                 else
                 {
