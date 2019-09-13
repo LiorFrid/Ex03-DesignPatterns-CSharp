@@ -131,7 +131,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 				}
 			}
 
-			PhotosAndLikes bestHour = new PhotosAndLikes(0, 0);
+			PhotosAndLikes bestHourPhotoAndLikes = new PhotosAndLikes(0, 0);
 			float maxLikePerPhoto = 0;
 			float likesPerPhoto;
 			int bestHourToPhoto = 0;
@@ -149,7 +149,7 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 
 				if (maxLikePerPhoto < likesPerPhoto)
 				{
-					bestHour = photosAndLikes;
+					bestHourPhotoAndLikes = photosAndLikes;
 					maxLikePerPhoto = likesPerPhoto;
 					bestHourToPhoto = hour;
 				}
@@ -157,16 +157,16 @@ namespace C19_Ex03_LiorFridman_206081085_DorCohen_307993959
 				hour += 1;
 			}
 
-			Photo maxPhoto = new Photo();
-			foreach(Photo photo in bestHour)
+			Photo bestPhotoOnBestTime = new Photo();
+			foreach(Photo photo in bestHourPhotoAndLikes)
 			{
-				if (maxPhoto.LikedBy.Count < photo.LikedBy.Count)
+				if (bestPhotoOnBestTime.LikedBy.Count < photo.LikedBy.Count)
 				{
-					maxPhoto = photo;
+					bestPhotoOnBestTime = photo;
 				}
 			}
 
-			io_MostLikesPicture = maxPhoto.PictureNormalURL;
+			io_MostLikesPicture = bestPhotoOnBestTime.PictureNormalURL;
 			return bestHourToPhoto;
 		}
 
